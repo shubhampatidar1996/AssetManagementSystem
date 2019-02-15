@@ -10,6 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="UserDetails")
+
 public class UsersBean {
 @Id
 @GeneratedValue

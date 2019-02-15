@@ -109,7 +109,7 @@
 		</div>
      
         <div class="form-group">
-        	<input type="text" class="form-control" name="email" placeholder="Email Id" required="required">
+        	<input type="text" class="form-control" name="eid" placeholder="User Id" required="required">
         </div>
 		<div class="form-group">
             <input type="password" class="form-control" name="pwd" placeholder="Password" required="required">

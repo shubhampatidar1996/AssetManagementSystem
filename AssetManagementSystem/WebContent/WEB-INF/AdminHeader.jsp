@@ -19,10 +19,11 @@ response.addHeader("expire","0");
 		<ul class="nav navbar-nav">
 			<li><a href="AdminHome"><b>Home</b></a></li>
 			<li><a href="InsertUser"><b>Insert User Details</b></a></li>
-			<li><a href="ViewUserDetails"><b>Update User Details</b></a></li>
+			<li><a href=""><b>Update User Details</b></a></li>
 			<li><a href="ViewUserDetails"><b>View User Details</b></a></li>
-			<li><a href="ViewUserDetails"><b>De-Activate</b></a></li>
-			<li><a href="ViewUserDetails"><b>Change Password</b></a></li>
+			<li><a href="Assets"><b>Add Assets</b></a></li>
+			<li><a href=""><b>De-Activate</b></a></li>
+			<li><a href=""><b>Change Password</b></a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			<li><a href="Logout"><span class="glyphicon glyphicon-log-out"></span> <b>Logout</b></a></li>

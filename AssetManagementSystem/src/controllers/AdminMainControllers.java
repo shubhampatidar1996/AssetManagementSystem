@@ -9,14 +9,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import beans.AssetBean;
 import beans.UsersBean;
 import dao.MyDao;
 
 @Controller
-//@SessionAttributes("email")
+//@SessionAttributes("eid")
 
 public class AdminMainControllers
 {
@@ -40,55 +40,55 @@ public class AdminMainControllers
  }
 
  @RequestMapping("/AdminLoginCheck")
-  public ModelAndView adminCheck(HttpServletRequest request,@RequestParam String email,@RequestParam String pwd,@RequestParam String Designation)
+  public ModelAndView adminCheck(HttpServletRequest request,@RequestParam int eid,@RequestParam String pwd,@RequestParam String Designation)
   {
    ModelAndView mv=null; 
    if(Designation.equals("Admin"))
    {
-    int x=m.AdminLoginCheck(email,pwd,Designation);
+    int x=m.AdminLoginCheck(eid,pwd,Designation);
     System.out.println(x);
     if(x==1 && Designation.equals("Admin"))
     {
      mv=new ModelAndView("AdminHome") ;
- 	 mv.addObject("email",email);
+ 	 mv.addObject("eid",eid);
  	 HttpSession session=request.getSession();
- 	 session.setAttribute("email", email);
+ 	 session.setAttribute("eid", eid);
      return mv;    
     }
    }
     if(Designation.equals("Employee"))
     {
-     int x=m.EmployeeLoginCheck(email,pwd,Designation);
+     int x=m.EmployeeLoginCheck(eid,pwd,Designation);
      if(x==1 && Designation.equals("Employee"))
      {
       mv=new ModelAndView("EmployeeHome") ;
- 	  mv.addObject("email",email);
+ 	  mv.addObject("eid",eid);
  	  HttpSession session=request.getSession();
- 	  session.setAttribute("email", email);
+ 	  session.setAttribute("eid", eid);
       return mv;    
      }
     }
     if(Designation.equals("Manager"))
     {
-	 int x=m.ManagerLoginCheck(email,pwd,Designation);
+	 int x=m.ManagerLoginCheck(eid,pwd,Designation);
 	 if(x==1 && Designation.equals("Manager"))
 	 {
 	  mv=new ModelAndView("ManagerHome");
-	  mv.addObject("email",email);
+	  mv.addObject("eid",eid);
 	  HttpSession session=request.getSession();
-	  session.setAttribute("email", email);
+	  session.setAttribute("eid", eid);
 	  return mv;    
 	 }
  	}
     if(Designation.equals("Support"))
     {
-	 int x=m.SupportLoginCheck(email,pwd,Designation);
+	 int x=m.SupportLoginCheck(eid,pwd,Designation);
 	 if(x==1 && Designation.equals("Support"))
 	 {
 	  mv=new ModelAndView("SupportHome");
-	  mv.addObject("email",email);
+	  mv.addObject("eid",eid);
 	  HttpSession session=request.getSession();
-	  session.setAttribute("email", email);
+	  session.setAttribute("eid", eid);
 	  return mv;    
 	 }
  	}
@@ -140,4 +140,27 @@ public class AdminMainControllers
    mv.addObject("LIST",list);
    return mv;    
   }    
+
+ @RequestMapping("/Assets")
+ public String Assets()
+ {
+   return "AddAssets";
+ }
+ 
+ @RequestMapping("/AddAssets")
+ public ModelAndView AssetsInsert(@ModelAttribute AssetBean e)
+ {
+   MyDao m=new MyDao();
+	ModelAndView mv=null;
+	int x= m.InsertAssetsDetails(e);
+	if(x==1)
+	{
+	 mv=new ModelAndView("AddAssets","msg","Asset Inserted Successfully") ;  
+   }
+   else
+   {
+	 mv=new ModelAndView("AddAssets","msg","Asset Not Inserted") ;
+   }
+	return mv;
+ }
 }

@@ -19,7 +19,7 @@ response.addHeader("expire","0");
 		<ul class="nav navbar-nav">
 			<li><a href="EmpHome"><b>Home</b></a></li>
 			<li><a href="EmployeeProfile"><b>Profile</b></a></li>
-			<li><a href="CreateRequest"><b>Create Request</b></a></li>
+			<li><a href="CreateReq"><b>Create Request</b></a></li>
 			<li><a href="ViewMyRequest"><b>View My Request</b></a></li>
 			<li><a href="MyAssets"><b>My Assets</b></a></li>
 			<li><a href="AssetTransfer"><b>Asset Transfer</b></a></li>

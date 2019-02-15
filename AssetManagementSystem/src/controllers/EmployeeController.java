@@ -1,7 +1,16 @@
 package controllers;
 
+import java.util.ArrayList;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import beans.AssetBean;
+import beans.UsersBean;
+import dao.EmpDao;
+import dao.MyDao;
 
 @Controller
 public class EmployeeController
@@ -18,11 +27,18 @@ public class EmployeeController
 	   return "EmployeeProfile";	
 	  }
 	 
-	 @RequestMapping("/ViewMyRequest")
-	 public String ViewMyRequest()
+	 @RequestMapping("/CreateReq")
+	 public ModelAndView CreateRequest(@ModelAttribute AssetBean e)
 	 {
-	   return "ViewMyRequest";
-	 }
+		   EmpDao m=new EmpDao();
+		   ArrayList<AssetBean> list= m.ViewAsset();
+		  
+		   ModelAndView mv=null;
+		   
+		   mv=new ModelAndView("EmpCreateRequest");
+		   mv.addObject("LIST",list);
+		   return mv;    
+	 }    
 	 
 	 @RequestMapping("/MyAssets")
 	 public String MyAssets()

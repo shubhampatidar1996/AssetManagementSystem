@@ -13,8 +13,8 @@
 	<%@include file="AdminHeader.jsp"%>
 	<center>
 	<%
-	String email=(String)session.getAttribute("email");
-	if(email==null)
+	int eid=(Integer)session.getAttribute("eid");
+	if(eid==0)
 		response.sendRedirect("/");
 	%>
 		<h1>

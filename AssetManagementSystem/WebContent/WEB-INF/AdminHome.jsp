@@ -11,12 +11,12 @@
 <%@include file="AdminHeader.jsp"%>
 	<center>
 	<%
-	String email=(String)session.getAttribute("email");
-	if(email==null)
+	int eid=(Integer)session.getAttribute("eid");
+	if(eid==0)
 		response.sendRedirect("/");
 	%>
 		<h1>
-			<font color="grey">WELCOME-${email}</font>
+			<font color="grey">WELCOME-${eid}</font>
 		</h1>
 	</center>
 </body>

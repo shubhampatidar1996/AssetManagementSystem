@@ -9,16 +9,18 @@ import javax.persistence.Table;
 @Table(name="AdminLogin")
 public class AdminBean {
 @Id
-@Column(name="emailid")	
-String email;
+@Column(name="ID")
+int Aid;
 @Column(name="password")
 String pwd;
 String Designation;
-public String getEmail() {
-	return email;
+
+
+public int getAid() {
+	return Aid;
 }
-public void setEmail(String email) {
-	this.email = email;
+public void setAid(int aid) {
+	Aid = aid;
 }
 public String getPwd() {
 	return pwd;
